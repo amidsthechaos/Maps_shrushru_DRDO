@@ -19,7 +19,7 @@ georoute-frontend/.angular/
 georoute-frontend/npm-debug.log*
 
 # Self-hosted fonts are fetched by setup script — keep folder, ignore binaries
-georoute-frontend/src/assets/fonts/*.woff2
+
 
 # ─── Offline portable package ───────────────────────────────────────────────
 offline-bundle/
