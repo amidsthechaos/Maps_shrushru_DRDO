@@ -1,0 +1,227 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  width: 340px;
+  height: 100%;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__logo {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 1.35rem;
+    letter-spacing: 0.5px;
+  }
+
+  &__sub {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__actions {
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+
+  &__routes {
+    margin-top: 0.25rem;
+  }
+}
+
+.field-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* Segmented control (algorithm) */
+.seg {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__btn {
+    flex: 1;
+    padding: 0.55rem 0;
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &--active {
+      background: var(--route-0);
+      color: #fff;
+    }
+  }
+}
+
+/* Number stepper */
+.num-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  button {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.num-display {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  min-width: 2ch;
+  text-align: center;
+}
+
+/* Coordinate display */
+.coord-display {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+}
+
+.pin-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.coord-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.road-name {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.coord-placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  background: var(--surface-2);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+}
+
+/* Buttons */
+.btn {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: filter 0.15s, background 0.15s;
+
+  &--primary {
+    background: var(--route-0);
+    color: #fff;
+    border-color: var(--route-0);
+
+    &:hover:not(:disabled) {
+      filter: brightness(1.1);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--text);
+
+    &:hover {
+      background: var(--surface-2);
+    }
+  }
+}
+
+/* Route cards */
+.route-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.5rem;
+
+  &__swatch {
+    width: 6px;
+    height: 32px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  &__meta {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+}

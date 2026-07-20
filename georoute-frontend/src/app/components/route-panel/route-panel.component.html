@@ -1,0 +1,86 @@
+<aside class="sidebar">
+  <header class="sidebar__header">
+    <span class="sidebar__logo">GeoRoute</span>
+    <span class="sidebar__sub">Pan-India Routing</span>
+  </header>
+
+  <!-- Routing algorithm -->
+  <section class="sidebar__section">
+    <label class="field-label">Algorithm</label>
+    <div class="seg">
+      <button
+        class="seg__btn"
+        [class.seg__btn--active]="(mapState.algorithm$ | async) === 'astar'"
+        (click)="setAlgorithm('astar')"
+      >
+        A*
+      </button>
+      <button
+        class="seg__btn"
+        [class.seg__btn--active]="(mapState.algorithm$ | async) === 'dijkstra'"
+        (click)="setAlgorithm('dijkstra')"
+      >
+        Dijkstra
+      </button>
+    </div>
+  </section>
+
+  <!-- Number of routes -->
+  <section class="sidebar__section">
+    <label class="field-label">Routes to show</label>
+    <div class="num-input-row">
+      <button (click)="decRoutes()" [disabled]="(mapState.numAlternatePaths$ | async)! <= 1">−</button>
+      <span class="num-display">{{ mapState.numAlternatePaths$ | async }}</span>
+      <button (click)="incRoutes()" [disabled]="(mapState.numAlternatePaths$ | async)! >= 10">+</button>
+    </div>
+  </section>
+
+  <!-- Origin -->
+  <section class="sidebar__section">
+    <label class="field-label">Origin</label>
+    <div class="coord-display" *ngIf="mapState.sourcePin$ | async as src; else srcEmpty">
+      <span class="pin-dot" style="background: var(--pin-source)"></span>
+      <span class="coord-text">{{ src.snappedLat | number: '1.4-4' }}°, {{ src.snappedLng | number: '1.4-4' }}°</span>
+      <span class="road-name">{{ src.nearestRoadName }}</span>
+    </div>
+    <ng-template #srcEmpty>
+      <div class="coord-placeholder">Click on map to set origin</div>
+    </ng-template>
+  </section>
+
+  <!-- Destination -->
+  <section class="sidebar__section">
+    <label class="field-label">Destination</label>
+    <div class="coord-display" *ngIf="mapState.destPin$ | async as dst; else dstEmpty">
+      <span class="pin-dot" style="background: var(--pin-dest)"></span>
+      <span class="coord-text">{{ dst.snappedLat | number: '1.4-4' }}°, {{ dst.snappedLng | number: '1.4-4' }}°</span>
+      <span class="road-name">{{ dst.nearestRoadName }}</span>
+    </div>
+    <ng-template #dstEmpty>
+      <div class="coord-placeholder">Click on map to set destination</div>
+    </ng-template>
+  </section>
+
+  <!-- Action buttons -->
+  <section class="sidebar__section sidebar__actions">
+    <button class="btn btn--primary" [disabled]="!canFindRoutes" (click)="findRoutes()">
+      <span *ngIf="!(mapState.routing$ | async)">Find Routes</span>
+      <span *ngIf="mapState.routing$ | async">Calculating...</span>
+    </button>
+    <button class="btn btn--ghost" (click)="clearMap()">Clear Map</button>
+  </section>
+
+  <!-- Route results list -->
+  <section class="sidebar__section sidebar__routes" *ngIf="(mapState.routes$ | async)?.length">
+    <label class="field-label">Routes</label>
+    <div class="route-card" *ngFor="let route of mapState.routes$ | async; let i = index">
+      <div class="route-card__swatch" [style.background]="routeColors[i] ?? routeColors[4]"></div>
+      <div class="route-card__info">
+        <span class="route-card__label">{{ route.label }}</span>
+        <span class="route-card__meta">
+          {{ formatDistance(route.totalDistanceMeters) }} · {{ formatTime(route.estimatedTimeMinutes) }}
+        </span>
+      </div>
+    </div>
+  </section>
+</aside>

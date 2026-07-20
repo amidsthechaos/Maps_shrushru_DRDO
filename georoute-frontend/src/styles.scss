@@ -1,0 +1,62 @@
+/*
+  Self-hosted fonts only — local .woff2 files in src/assets/fonts/.
+  No @import url('https://fonts.googleapis.com/...') anywhere.
+*/
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global token variables */
+:root {
+  --bg:          #0D1117;
+  --surface:     #161B22;
+  --surface-2:   #1C2333;
+  --border:      #30363D;
+  --route-0:     #2F81F7; /* Primary — blue */
+  --route-1:     #F78166; /* Alternate 1 — orange */
+  --route-2:     #A371F7; /* Alternate 2 — purple */
+  --route-3:     #3FB950; /* Alternate 3 — green */
+  --route-4:     #39D4C5; /* Alternate 4+ — teal */
+  --pin-source:  #3FB950;
+  --pin-dest:    #F78166;
+  --text:        #E6EDF3;
+  --text-muted:  #8B949E;
+  --error:       #FF6B6B;
+  --font-mono:   'JetBrains Mono', 'Courier New', monospace;
+  --font-body:   'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  height: 100vh;
+  overflow: hidden;
+}

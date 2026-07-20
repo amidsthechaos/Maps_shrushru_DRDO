@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0e14;
+}
+
+:host ::ng-deep .ol-zoom {
+  top: 1rem;
+  left: auto;
+  right: 1rem;
+}
+
+:host ::ng-deep .ol-control button {
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+:host ::ng-deep .ol-control button:hover {
+  background-color: var(--surface-2);
+}
