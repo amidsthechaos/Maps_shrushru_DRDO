@@ -188,6 +188,8 @@ and
 /.angular
 /dist
 
+add MAVEN_HOME = C:\Users\shrut\AppData\Local\Programs\apache-maven\apache-maven-3.9.16
+
 /backend
 -/target
 
