@@ -191,4 +191,8 @@ and
 /backend
 -/target
 
+
+for rebuilding 
+mvn clean spring-boot:run
+
 https://drive.google.com/drive/folders/1F2wLBxkzMldFqrVnhRzaaI0ouerHVOCD?usp=drive_link
