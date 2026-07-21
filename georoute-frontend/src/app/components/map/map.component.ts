@@ -141,11 +141,11 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         this.mapState.snapping$.next(false);
-        let msg = 'Snap failed — is the backend running on :8080?';
+        let msg = `Snap failed — is the backend running at ${environment.apiBaseUrl}?`
         if (err?.status === 503) {
           msg = 'Roads still loading — wait for ingest to finish, then try again';
         } else if (err?.status === 404) {
-          msg = 'No road within 1km — click closer to a road';
+          msg = err?.error?.message ?? 'No nearby road found';
         } else if (err?.status === 504 || err?.status === 500) {
           msg = err?.error?.message || 'Snap timed out — try clicking again';
         } else if (err?.message?.includes('timed out') || err?.message?.includes('Timeout')) {
