@@ -23,7 +23,7 @@ import { SnapService } from '../../services/snap.service';
 import { RouteResult } from '../../models/route-result.model';
 import { environment } from '../../../environments/environment';
 
-const ROUTE_COLORS = ['#2F81F7', '#F78166', '#A371F7', '#3FB950', '#39D4C5'];
+const ROUTE_COLORS = ['#2F81F7', '#F78166', '#A371F7', '#2c3e50', '#f1c40f'];
 const ROUTE_DASHES: (number[] | undefined)[] = [
   undefined, // primary: solid
   [8, 4], // alt 1: long dash
